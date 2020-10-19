@@ -10,6 +10,7 @@ namespace PersonDataManagement
             List<Person> personList = new List<Person>();
             AddRecords(personList);
             RetrievingTopTwoRecordsForAgeLessThanSixty(personList);
+            RetrieveDataForTeenagePerson(personList);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -29,6 +30,13 @@ namespace PersonDataManagement
             foreach (Person p in personList.FindAll(e => (e.Age < 60)).Take(2).ToList())
             {
                 Console.WriteLine("Name :" + p.Name + " Age :" + p.Age);
+            }
+        }
+        public static void RetrieveDataForTeenagePerson(List<Person> personList)
+        {
+            foreach (Person p in personList.FindAll(e => e.Age >= 13 && e.Age < 19))
+            {
+                Console.WriteLine("Name :"+p.Name);
             }
         }
     }
