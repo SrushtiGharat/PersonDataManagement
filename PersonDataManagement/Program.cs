@@ -11,6 +11,7 @@ namespace PersonDataManagement
             AddRecords(personList);
             RetrievingTopTwoRecordsForAgeLessThanSixty(personList);
             RetrieveDataForTeenagePerson(personList);
+            AverageAgeInList(personList);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -38,6 +39,12 @@ namespace PersonDataManagement
             {
                 Console.WriteLine("Name :"+p.Name);
             }
+        }
+        public static void AverageAgeInList(List<Person> personList)
+        {
+             double averageAge = personList.Average(e => e.Age);
+             Console.WriteLine("Average age :"+averageAge);
+            
         }
     }
 }
