@@ -12,6 +12,7 @@ namespace PersonDataManagement
             RetrievingTopTwoRecordsForAgeLessThanSixty(personList);
             RetrieveDataForTeenagePerson(personList);
             AverageAgeInList(personList);
+            CheckName("Sue", personList);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -45,6 +46,17 @@ namespace PersonDataManagement
              double averageAge = personList.Average(e => e.Age);
              Console.WriteLine("Average age :"+averageAge);
             
+        }
+        public static void CheckName(string name,List<Person> personList)
+        {
+            if(personList.Any(e => e.Name.Equals(name)))
+            {
+                Console.WriteLine("Name is present in the list");
+            }
+            else
+            {
+                Console.WriteLine("Name is not present in the list");
+            }
         }
     }
 }
