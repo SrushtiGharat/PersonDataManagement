@@ -14,6 +14,7 @@ namespace PersonDataManagement
             AverageAgeInList(personList);
             CheckName("Sue", personList);
             SkipRecordForAgeLessThanSixty(personList);
+            RemoveSpecificName("Sue", personList);
         }
         private static void AddRecords(List<Person> listPersonInCity)
         {
@@ -21,13 +22,12 @@ namespace PersonDataManagement
             listPersonInCity.Add(new Person("203456877", "SAM", "13 Main Ct, Newyork,NY", 25));
             listPersonInCity.Add(new Person("203456878", "Elan", "14 Main Street, Newyork,NY", 35));
             listPersonInCity.Add(new Person("203456879", "Smith", "12 Main Street, Newyork,NY", 45));
-            listPersonInCity.Add(new Person("203456879", "Smith", "12 Main Street, Newyork,NY", 45));
             listPersonInCity.Add(new Person("203456880", "SAM", "345 Main Ave, Dayton,OH", 55));
             listPersonInCity.Add(new Person("203456881", "Sue", "32 Cranbrook Rd, Newyork,NY", 65));
             listPersonInCity.Add(new Person("203456882", "Winston", "1208 Alex st, Newyork,NY", 65));
             listPersonInCity.Add(new Person("203456883", "Mac", "126 Province Ave, Baltimore,NY", 85));
             listPersonInCity.Add(new Person("203456884", "SAM", "126 Province Ave, Baltimore,NY", 95));
-           
+            listPersonInCity.Add(new Person("203456884", "Paul", "126 Main Street, Baltimore,NY", 25));
         }
         public static void RetrievingTopTwoRecordsForAgeLessThanSixty(List<Person> personList)
         {
@@ -64,6 +64,15 @@ namespace PersonDataManagement
         {
             
             foreach(Person p in personList.OrderBy(e => e.Age).SkipWhile(e => e.Age < 60))
+            {
+                Console.WriteLine("Name :" + p.Name + " Age :" + p.Age);
+            }
+        }
+        public static void RemoveSpecificName(string name,List<Person> personList)
+        {
+            personList.RemoveAll(e => e.Name.Equals(name));
+            Console.WriteLine("Record removed successfully");
+            foreach (Person p in personList)
             {
                 Console.WriteLine("Name :" + p.Name + " Age :" + p.Age);
             }
